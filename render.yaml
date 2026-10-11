@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: word-odyssey-api
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.6
+      - key: MONGODB_DB
+        value: word_odyssey
+      - key: MONGO_URI
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
